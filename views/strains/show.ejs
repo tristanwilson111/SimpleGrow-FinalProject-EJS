@@ -1,0 +1,48 @@
+<% include ../partials/header %>
+  
+<section>
+  <div>
+    <a href="/strains/new">New Strain</a>
+  </div>
+
+  <div class="row">
+
+    <div class="col-sm-6">
+      <div class="card">
+          <div class="card-body">
+            <% if ( strain.image ) { %>
+              <div class="image">
+                <img src="/images/<%= strain.image %>" class="img-thumbnail img-fluid">
+              </div>
+            <% } %>
+            
+            <h5 class="card-title">
+              <%= strain.name %>
+            </h5>
+
+            <p>
+              <%= strain.cannabisType %>
+            </p>
+            
+            <p>
+              <%= strain.price %>
+            </p>
+            
+            <div class="actions">
+              <a href="/strains/<%= strain.id %>/edit" class="btn btn-primary">
+                Edit
+              </a>
+
+              <form action="/strains/<%= strain.id %>/delete" method="post"  onsubmit="return confirm('Are you sure you want to remove this strain?');">
+                <input type="hidden" name="id" value="<%= strain.id %>">
+                <button type="submit" class="btn btn-danger">Remove</button>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+
+  </div>
+</section>
+
+<% include ../partials/footer %>
