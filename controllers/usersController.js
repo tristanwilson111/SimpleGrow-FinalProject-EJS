@@ -20,7 +20,7 @@ exports.create = function(req,res,next) {
         req.login(user, function(){
             req.session.messages.push('You were successfully registered.')
             
-            res.redirect('/products')
+            res.redirect('/strains')
         });
     })
     .catch( function(err){

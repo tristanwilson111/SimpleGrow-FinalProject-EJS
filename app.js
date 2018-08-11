@@ -1,37 +1,27 @@
-var createError = require('http-errors');
-var express = require('express');
+const createError = require('http-errors');
+const express = require('express');
 const fileUpload = require('express-fileupload');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var sassMiddleware = require('node-sass-middleware');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const sassMiddleware = require('node-sass-middleware');
 
-// this is our home route
-var indexRouter = require('./routes/index');
+//Routes
+const indexRouter = require('./routes/index');
+const strainsRouter = require('./routes/strains');
+const usersRouter = require('./routes/users');
+const sessionsRouter = require('./routes/sessions');
 
-// add the products routes
-var productsRouter = require('./routes/products');
-
-// add the strains route
-var strainsRouter = require('./routes/strains');
-
-//Add the users route
-var usersRouter = require('./routes/users');
-
-var sessionsRouter = require('./routes/sessions');
-
+//Utilize express' upload file funtion
 var app = express();
 app.use(fileUpload());
 
-// use mongoose to connect to mongo
 var mongoose = require( 'mongoose' );
 
-////PASSPORT CONFIG
-
-//adding passport
-var passport = require('passport');
-var session = require('express-session');
-var localStrategy = require('passport-local').Strategy;
+//Passport User Authentication
+const passport = require('passport');
+const session = require('express-session');
+const localStrategy = require('passport-local').Strategy;
 
 var config = require( './config/connect' );
 mongoose.connect( config.db );
@@ -54,15 +44,12 @@ passport.use( User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//Our helper
 app.use(function(req,res,next){
   res.locals.autheticated = req.isAuthenticated();
   next();
 });
 
-////PASSPORT CONFIG END
-
-// view engine setup
+//View Engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -78,33 +65,23 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// this is our home route
+//Include our routes
 app.use('/', indexRouter);
-
-// this is our products router
-app.use('/products', productsRouter);
-
-// this is our strains router
 app.use('/strains',strainsRouter);
-
-//This is our users router
 app.use('/users', usersRouter);
-
-//This is our sessions router
 app.use('/sessions', sessionsRouter);
 
-// catch 404 and forward to error handler
+// 404 Error Handling
 app.use(function(req, res, next) {
   next(createError(404));
 });
 
-// error handler
+// Error Handling
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
+  //Render Error Page
   res.status(err.status || 500);
   res.render('error');
 });

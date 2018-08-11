@@ -1,9 +1,8 @@
 var Strain = require( '../models/strain' );
 
 /* VIEWS */
-// Index
+//Index View Handle
 exports.index = function( req, res, next ) {
-  // create our locals parameter
   let locals = {
     title: 'Strains List',
     messages: req.session.messages || []
@@ -13,10 +12,8 @@ exports.index = function( req, res, next ) {
 
   Strain.find()
   .then( function ( strains ) {
-    // add the strains to our locals
     locals.strains = strains;
 
-    // render our view
     res.render( 'strains/index', locals )
   })
   .catch( function ( err ) {
@@ -24,9 +21,8 @@ exports.index = function( req, res, next ) {
   });
 };
 
-// Show
+//Show View Handle
 exports.show = function ( req, res, next ) {
-  // locals
   let locals = {
     title: 'Strain'
   };
@@ -35,10 +31,8 @@ exports.show = function ( req, res, next ) {
     _id: req.params.id
   })
   .then( function ( strain ) {
-    // add the strains to our locals
     locals.strain = strain;
 
-    // render our view
     res.render( 'strains/show', locals )
   })
   .catch( function ( err ) {
@@ -46,9 +40,8 @@ exports.show = function ( req, res, next ) {
   })
 };
 
-// New
+// New View Handle
 exports.new = function ( req, res ) {
-  // locals
   let locals = {
     title: 'New Strain'
   };
@@ -56,9 +49,8 @@ exports.new = function ( req, res ) {
   res.render( 'strains/new', locals )
 };
 
-// Edit
+// Edit View Handle
 exports.edit = function ( req, res, next ) {
-  // locals
   let locals = {
     title: 'Edit Strain'
   };
@@ -67,10 +59,8 @@ exports.edit = function ( req, res, next ) {
     _id: req.params.id
   })
   .then( function ( strain ) {
-    // add the strains to our locals
     locals.strain = strain;
 
-    // render our view
     res.render( 'strains/edit', locals )
   })
   .catch( function ( err ) {
@@ -78,10 +68,10 @@ exports.edit = function ( req, res, next ) {
   })
 };
 
-/* ACTIONS */
+/* ACTIONS - Create, Update, Delete */
 // Create 
 exports.create = function ( req, res, next ) {
-  // image
+  // Image Handling
   if ( req.files && req.files.image ) {
     let image = req.files.image
     image.mv(`public/images/${image.name}`)
@@ -90,27 +80,27 @@ exports.create = function ( req, res, next ) {
     imageName = null;
   }
 
-  // specifications
+  // Specifications
   let specifications = null
   if (req.body['specification[key]'] && req.body['specification[value]']) {
-    // assign our fields results to variables
+    //Assign field inputs to variables
     let spec_keys = req.body['specification[key]']
     let spec_values = req.body['specification[value]']
     
-    // assign an empty array to specfications
+    //Assign empty array to specifications
     specifications =[]
 
-    // populate if an array
+    //If array, populate
     if ( spec_keys && Array.isArray( spec_keys ) ) {
       for (let i = 0; i < spec_keys.length; i++) {
         specifications.push( { key: spec_keys[i], value: spec_values[i] } )
       }
-    } else {
-      // populate if a string
+    } else { // Else, Populate String
       specifications.push( { key: spec_keys, value: spec_values } )
     }
   }
 
+  //Strain.create function
   Strain.create({
     name: req.body.name,
     cannabisType: req.body.cannabisType,
@@ -128,8 +118,6 @@ exports.create = function ( req, res, next ) {
 
 // Update
 exports.update = function ( req, res, next ) {
-  // images
-  // image
   if ( req.files && req.files.image ) {
     let image = req.files.image
     image.mv(`public/images/${image.name}`)
@@ -138,23 +126,18 @@ exports.update = function ( req, res, next ) {
     imageName = null;
   }
   
-  // specifications
   let specifications = null
   if (req.body['specification[key]'] && req.body['specification[value]']) {
-    // assign our fields results to variables
     let spec_keys = req.body['specification[key]']
     let spec_values = req.body['specification[value]']
     
-    // assign an empty array to specfications
     specifications =[]
 
-    // populate if an array
     if ( spec_keys && Array.isArray( spec_keys ) ) {
       for (let i = 0; i < spec_keys.length; i++) {
         specifications.push( { key: spec_keys[i], value: spec_values[i] } )
       }
     } else {
-      // populate if a string
       specifications.push( { key: spec_keys, value: spec_values } )
     }
   }

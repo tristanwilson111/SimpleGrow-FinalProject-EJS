@@ -16,7 +16,6 @@ exports.create = function (req,res,next) {
     passport.authenticate(
         'local', 
         {
-            successRedirect: '/products',
             failureRedirect: '/sessions/new',
             failureMessage: 'Invalid Login Credentials'
         }

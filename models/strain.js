@@ -1,7 +1,5 @@
 const mongoose = require( 'mongoose' );
 
-// all model classes will inherit from 
-// the mongoose.Schema class
 const SpecificationSchema = new mongoose.Schema({
   key: {
     type: String,
@@ -32,5 +30,4 @@ const StrainSchema = new mongoose.Schema({
   }
 });
 
-// make this class public
 module.exports = mongoose.model( 'Strain', StrainSchema );

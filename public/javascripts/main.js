@@ -1,5 +1,6 @@
 // adds the spec form to the dom
 function addSpecForm() {
+  //;;What does this "#product_specification" do?
   let specTemp = document.querySelector('#product_specification');
   let insertPnt = document.querySelector('#product_specifications');
 
@@ -8,7 +9,7 @@ function addSpecForm() {
   insertPnt.appendChild(clone);
 }
 
-// removes the spec form from the dom
+//Removes the spec form from the dom
 function delSpecForm(event) {
   event.target.parentNode.remove();
 }
