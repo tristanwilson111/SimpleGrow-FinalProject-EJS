@@ -5,7 +5,9 @@ html {
   box-sizing: inherit; }
 
 body {
-  background-color: #ecf0f1; }
+  background-color: #1E1E1E; }
+  body .new-strain {
+    margin-bottom: 20px; }
   body .container {
     background-color: #fff;
     padding: 1em;
@@ -34,5 +36,11 @@ header {
 blockquote {
   margin-top: 1em;
   margin-left: 20em; }
+
+.form-group {
+  padding-bottom: 10px; }
+
+.mb-0 {
+  color: white; }
 
 /*# sourceMappingURL=style.css.map */

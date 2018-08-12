@@ -5,11 +5,15 @@ html {
   box-sizing: inherit;
 }
 
-$background: #ecf0f1;
+$background: #1E1E1E;
 $button-colour: #e74c3c;
 
 body {
   background-color: $background;
+
+  .new-strain {
+    margin-bottom: 20px;
+  }
 
   .container {
     background-color: #fff;
@@ -60,5 +64,10 @@ blockquote {
   margin-left: 20em;
 }
 
+.form-group{
+  padding-bottom: 10px;
+}
 
-
+.mb-0 {
+  color: white;
+}

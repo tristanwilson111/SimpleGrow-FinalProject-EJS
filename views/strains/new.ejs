@@ -10,16 +10,16 @@
         <input type="text" class="form-control" id="strain_name" name="name" placeholder="Name of Strain" required>
       </div>
 
-      <div class="radio-inline">
-        <label><input type="radio" name="optradio">Sativa</label>
-        <label><input type="radio" name="optradio">Indica</label>
-        <label><input type="radio" name="optradio">Hybrid</label>
+      <div class="form-group">
+        <label for="cannabisType"><input type="radio" name="cannabisType" value="Sativa" id="strain_cannabisType">   Sativa</label>
+        <label for="cannabisType"><input type="radio" name="cannabisType" value="Indica" id="strain_cannabisType">   Indica</label>
+        <label for="cannabisType"><input type="radio" name="cannabisType" value="Hybrid" id="strain_cannabisType">   Hybrid</label>
       </div> 
 
-      <div class="form-group">
+      <!--<div class="form-group">
         <label for="cannabisType">Type of Cannabis</label>
         <input type="text" class="form-control" id="strain_cannabisType" name="cannabisType" placeholder="Sativa/Indica/Hybrid" required>
-      </div>
+      </div>-->
 
       <div class="form-group">
         <input type="file" name="image" id="image">
@@ -38,7 +38,7 @@
     </fieldset>
 
     <div class="form-group">
-      <button type="submit" class="btn btn-primary btn-lg">Create Strain</button>
+      <button type="submit" class="btn btn-outline-success btn-lg">Create Strain</button>
     </div>
   </form>
 </section>
