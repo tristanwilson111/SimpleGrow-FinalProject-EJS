@@ -15,9 +15,6 @@ body {
     border-radius: 1em; }
     body .container .card {
       margin-bottom: 1em; }
-      body .container .card .btn {
-        background-color: #e74c3c;
-        border: #e74c3c; }
       body .container .card .actions form {
         display: inline; }
     body .container .contain-width {

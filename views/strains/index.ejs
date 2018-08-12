@@ -29,17 +29,17 @@
             </p>
             
             <div class="actions">
-              <a href="/strains/<%= strain.id %>" class="btn btn-outline-success">
+              <a href="/strains/<%= strain.id %>" class="btn btn-outline-info">
                 Show
               </a>
 
-              <a href="/strains/<%= strain.id %>/edit" class="btn btn-outline-success">
+              <a href="/strains/<%= strain.id %>/edit" class="btn btn-outline-info">
                 Edit
               </a>
 
               <form action="/strains/<%= strain.id %>/delete" method="post"  onsubmit="return confirm('Are you sure you want to remove this strain?');">
                 <input type="hidden" name="id" value="<%= strain.id %>">
-                <button type="submit" class="btn btn-danger">Remove</button>
+                <button type="submit" class="btn btn-outline-danger">Remove</button>
               </form>
             </div>
           </div>

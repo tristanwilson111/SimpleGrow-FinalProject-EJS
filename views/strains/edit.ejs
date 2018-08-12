@@ -11,9 +11,10 @@
       </div>
 
       <div class="form-group">
-        <label for="cannabisType">Type of Cannabis</label>
-        <input type="text" class="form-control" id="strain_cannabisType" name="cannabisType" placeholder="Sativa/Indica/Hybrid" required value="<%= strain.cannabisType %>">
-      </div>
+        <label for="cannabisType"><input type="radio" name="cannabisType" value="Sativa" id="strain_cannabisType">   Sativa</label>
+        <label for="cannabisType"><input type="radio" name="cannabisType" value="Indica" id="strain_cannabisType">   Indica</label>
+        <label for="cannabisType"><input type="radio" name="cannabisType" value="Hybrid" id="strain_cannabisType">   Hybrid</label>
+      </div> 
 
       <div class="form-group">
         <input type="file" name="image" id="image">
