@@ -31,5 +31,34 @@ body {
         }
       }
     }
+
+    .contain-width {
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
   }
 }
+
+header {
+  padding: 20px;
+  
+  .jumbotron {
+    padding-bottom: 30px;
+  }
+
+  .simplegrow-logo {
+    margin-left: 83px;
+  }
+
+  .top-titlebar{
+    margin-top: 40px;
+  }
+}
+
+blockquote {
+  margin-top: 1em;
+  margin-left: 20em;
+}
+
+
+

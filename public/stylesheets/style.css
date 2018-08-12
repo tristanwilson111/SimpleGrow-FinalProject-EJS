@@ -18,5 +18,21 @@ body {
         border: #e74c3c; }
       body .container .card .actions form {
         display: inline; }
+    body .container .contain-width {
+      margin-left: 20px;
+      margin-bottom: 20px; }
+
+header {
+  padding: 20px; }
+  header .jumbotron {
+    padding-bottom: 30px; }
+  header .simplegrow-logo {
+    margin-left: 83px; }
+  header .top-titlebar {
+    margin-top: 40px; }
+
+blockquote {
+  margin-top: 1em;
+  margin-left: 20em; }
 
 /*# sourceMappingURL=style.css.map */

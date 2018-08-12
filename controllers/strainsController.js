@@ -5,6 +5,7 @@ var Strain = require( '../models/strain' );
 exports.index = function( req, res, next ) {
   let locals = {
     title: 'Strains List',
+    subtitle: 'The best strains in Canada',
     messages: req.session.messages || []
   };
 
@@ -24,7 +25,8 @@ exports.index = function( req, res, next ) {
 //Show View Handle
 exports.show = function ( req, res, next ) {
   let locals = {
-    title: 'Strain'
+    title: 'Strain',
+    subtitle: ''
   };
 
   Strain.findById({
@@ -43,7 +45,8 @@ exports.show = function ( req, res, next ) {
 // New View Handle
 exports.new = function ( req, res ) {
   let locals = {
-    title: 'New Strain'
+    title: 'New Strain',
+    subtitle: ''
   };
 
   res.render( 'strains/new', locals )
@@ -52,7 +55,8 @@ exports.new = function ( req, res ) {
 // Edit View Handle
 exports.edit = function ( req, res, next ) {
   let locals = {
-    title: 'Edit Strain'
+    title: 'Edit Strain',
+    subtitle: ''
   };
 
   Strain.findById({

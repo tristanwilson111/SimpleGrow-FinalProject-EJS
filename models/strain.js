@@ -18,7 +18,7 @@ const StrainSchema = new mongoose.Schema({
   },
   cannabisType: {
     type: String,
-    required: 'Please enter a strain cannabisType.'
+    required: 'Please enter a cannabis type.'
   },
   price: {
     type: Number,
